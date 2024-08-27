@@ -1,7 +1,9 @@
 import { AnimatedText } from '@/components/AnimatedText'
 import { SearchBar } from '@/components/SearchBar'
+import { FileType } from '@/types/data.types'
 import clsx from 'clsx'
 import React from 'react'
+import { FileTypeFilters } from '../FileTypeFilters/FileTypeFilters'
 import { SearchResult, SearchResultProps } from '../SearchResult'
 
 export type SearchProps = {
@@ -16,6 +18,9 @@ export type SearchProps = {
   onSelect?: SearchResultProps['onSelect']
 
   compact?: boolean
+
+  selectedFileTypes: FileType[]
+  onFileTypesChange: (types: FileType[]) => void
 }
 
 export const Search: React.FC<SearchProps> = ({
@@ -27,8 +32,19 @@ export const Search: React.FC<SearchProps> = ({
   selectedFiles,
   onSelect,
   compact,
+  selectedFileTypes,
+  onFileTypesChange,
 }) => {
-  console.log(results)
+  /*  const handleFileTypeChange = (types: FileType[]) => {
+    if (onFileTypesChange) {
+      onFileTypesChange(types)
+    }
+  } */
+
+  const filteredResults = results?.filter(
+    (file) =>
+      selectedFileTypes.length === 0 || selectedFileTypes.includes(file.type),
+  )
   return (
     <div className="flex flex-col">
       <SearchBar
@@ -44,8 +60,12 @@ export const Search: React.FC<SearchProps> = ({
           onSearch && onSearch(query || '')
         }}
       />
+      <FileTypeFilters
+        selectedTypes={selectedFileTypes}
+        onTypeChange={onFileTypesChange}
+      />
       <div>
-        {typeof results !== 'undefined' && (
+        {typeof filteredResults !== 'undefined' && (
           <SearchResult
             title={
               <div className="flex flex-row items-center gap-2">
@@ -67,7 +87,7 @@ export const Search: React.FC<SearchProps> = ({
             }
             selected={selectedFiles}
             onSelect={onSelect}
-            files={results}
+            files={filteredResults}
             hideList={compact}
             compactOverview={compact}
           />

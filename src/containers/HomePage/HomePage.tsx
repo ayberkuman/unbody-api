@@ -4,6 +4,7 @@ import { Search } from '@/components/Search'
 import { ChatLayout } from '@/layouts/ChatLayout/Chat.layout'
 import { useSearch } from '@/queries/useSearch'
 import { ApiChatMessage, chatApi } from '@/services/api'
+import { FileType } from '@/types/data.types'
 import { populateDirs } from '@/utils/populateDirs.util'
 import React, { useEffect, useMemo, useState } from 'react'
 
@@ -15,6 +16,7 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
   const [selectedFiles, setSelectedFiles] = useState<string[]>([])
   const [messages, setMessages] = useState<ApiChatMessage[]>([])
   const [generating, setGenerating] = useState(false)
+  const [selectedFileTypes, setSelectedFileTypes] = useState<FileType[]>([])
 
   const search = useSearch(
     { query },
@@ -65,6 +67,10 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
     onSearch()
   }, [])
 
+  const handleFileTypesChange = (types: FileType[]) => {
+    setSelectedFileTypes(types)
+  }
+
   return (
     <ChatLayout
       messageBar={
@@ -87,6 +93,8 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
         results={fileList}
         onSelect={(selected) => setSelectedFiles(selected)}
         selectedFiles={selectedFiles}
+        onFileTypesChange={handleFileTypesChange}
+        selectedFileTypes={selectedFileTypes}
       />
       <ChatMessages
         className="py-[20px]"
