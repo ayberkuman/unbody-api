@@ -71,6 +71,27 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
     setSelectedFileTypes(types)
   }
 
+  const handleEditMessage = async (index: number, newMessage: string) => {
+    setGenerating(true)
+
+    const updatedMessages = messages.slice(0, index + 1)
+    updatedMessages[index] = {
+      role: 'user',
+      message: newMessage,
+    }
+
+    setMessages(updatedMessages)
+
+    const { message: aiResponse } = await chatApi({
+      prompt: newMessage,
+      files: fileList.filter((f) => selectedFiles.includes(f.id)),
+      history: updatedMessages.slice(0, -1),
+    })
+
+    setGenerating(false)
+    setMessages([...updatedMessages, aiResponse])
+  }
+
   return (
     <ChatLayout
       messageBar={
@@ -102,6 +123,7 @@ export const HomePage: React.FC<HomePageProps> = ({ className, ...props }) => {
           role: msg.role,
           message: msg.message,
         }))}
+        onEditMessage={handleEditMessage}
       />
     </ChatLayout>
   )

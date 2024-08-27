@@ -42,11 +42,13 @@ const FILTERS: {
 type FileTypeFiltersProps = {
   selectedTypes: FileType[]
   onTypeChange: (types: FileType[]) => void
+  compact?: boolean
 }
 
 export const FileTypeFilters: React.FC<FileTypeFiltersProps> = ({
   selectedTypes,
   onTypeChange,
+  compact,
 }) => {
   const toggleFilter = (type: FileType | 'reset') => {
     if (type === 'reset') {
@@ -59,7 +61,9 @@ export const FileTypeFilters: React.FC<FileTypeFiltersProps> = ({
     onTypeChange(newTypes)
   }
   return (
-    <div className={'flex justify-center items-center gap-4'}>
+    <div
+      className={`flex justify-center items-center gap-4 ${compact && 'hidden'}`}
+    >
       {FILTERS.map((filter) => (
         <button
           key={filter.name}

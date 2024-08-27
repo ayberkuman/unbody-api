@@ -128,6 +128,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
             title={null}
             key="root-tree"
             HeadingComponent={() => <></>}
+            textValue="asd"
           >
             <div className={clsx('max-h-[500px] overflow-y-auto')}>
               {directoriesGroup.map((item, index) => (

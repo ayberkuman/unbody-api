@@ -3,7 +3,7 @@ import { SearchBar } from '@/components/SearchBar'
 import { FileType } from '@/types/data.types'
 import clsx from 'clsx'
 import React from 'react'
-import { FileTypeFilters } from '../FileTypeFilters/FileTypeFilters'
+import { FileTypeFilters } from '../FileTypeFilters'
 import { SearchResult, SearchResultProps } from '../SearchResult'
 
 export type SearchProps = {
@@ -63,6 +63,7 @@ export const Search: React.FC<SearchProps> = ({
       <FileTypeFilters
         selectedTypes={selectedFileTypes}
         onTypeChange={onFileTypesChange}
+        compact={compact}
       />
       <div>
         {typeof filteredResults !== 'undefined' && (
