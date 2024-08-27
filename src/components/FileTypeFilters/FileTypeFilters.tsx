@@ -62,7 +62,7 @@ export const FileTypeFilters: React.FC<FileTypeFiltersProps> = ({
   }
   return (
     <div
-      className={`flex justify-center items-center gap-4 ${compact && 'hidden'}`}
+      className={`flex justify-center flex-wrap items-center gap-4 ${compact && 'hidden'}`}
     >
       {FILTERS.map((filter) => (
         <button

@@ -35,10 +35,17 @@ export const Search: React.FC<SearchProps> = ({
   selectedFileTypes,
   onFileTypesChange,
 }) => {
-  const filteredResults = results?.filter(
-    (file) =>
-      selectedFileTypes.length === 0 || selectedFileTypes.includes(file.type),
-  )
+  const filteredResults = results?.filter((file) => {
+    if (selectedFileTypes.length === 0) return true
+
+    return selectedFileTypes.some((type) => {
+      if (type === 'pdf') {
+        return file.type === 'document' && file.extension === '.pdf'
+      }
+      return file.type === type
+    })
+  })
+
   return (
     <div className="flex flex-col">
       <SearchBar
