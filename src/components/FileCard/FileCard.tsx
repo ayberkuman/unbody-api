@@ -76,7 +76,6 @@ export const FileCard: React.FC<FileCardProps> = ({
         disableAnimation
         hideIndicator
         title={title}
-        textValue="a"
         subtitle={subtitle}
         {...itemProps}
         startContent={startContent}

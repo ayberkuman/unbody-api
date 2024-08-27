@@ -56,7 +56,6 @@ export const FolderCard: React.FC<FolderCardProps> = ({
         subtitle={subtitle}
         {...itemProps}
         startContent={startContent}
-        textValue="asd"
       >
         <div className="w-full flex flex-col gap-2 ps-4">{children}</div>
       </AccordionItem>
