@@ -28,6 +28,7 @@ export const Search: React.FC<SearchProps> = ({
   onSelect,
   compact,
 }) => {
+  console.log(results)
   return (
     <div className="flex flex-col">
       <SearchBar
