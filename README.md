@@ -23,3 +23,5 @@ There are a lot of improvements that can be made to this project in my opinion. 
 1. Users should be hit enter to submit their message.
 2. I think search should work wit keystrokes instead of clicking on the search button and if we do it should be debounced.
 3. Responsive design for different screen sizes.
+4. There are a lot of errors in the console arising from the nextui components textValue props is empty.
+5. Finally, I think this project is heavily dependent on the client side state with hiding message bar and files. Everything would be smoother for the user for example: if we used App Router with RSC, we could use the URL Params to control the search and file selections then chats could be on a separate page and the user could navigate between conversations.
