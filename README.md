@@ -1,40 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### File Search and Filtering
 
-## Getting Started
+- Implemented a filtering feature for the search results to filter by file type.
+- Created a `FileTypeFilters` component for selecting file types to filter the search results.
+- Used React state to manage selected file types and filter the results accordingly.
+- For pdf files, I checked the file extension because pdf files also has document type.
 
-First, run the development server:
+### Message Editing Functionality
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Implemented an `EditableMessage` component to allow users to edit their messages.
+- Users can edit their messages by clicking on the message and make changes.
+- When users edit their message, I remove the messages after the edited message and generate a new response.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Bonus Tasks
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- For the bonus tasks, I tried to handle errors and provide better error messages to the user.
+- For references, I couldn't generate an answer from the LLM because I kept getting the "cannot generate on fields" error. Also in the Unbody dashboard I couldn't use generate on the GraphQl playground and couldn't find a solution or example for this in the docs. But assuming I get references from the Unbody API, I can easily implement the references feature.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Future Improvements
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+There are a lot of improvements that can be made to this project in my opinion. Here are some:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Users should be hit enter to submit their message.
+2. I think search should work wit keystrokes instead of clicking on the search button and if we do it should be debounced.
+3. Responsive design for different screen sizes.

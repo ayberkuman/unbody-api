@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { CheckIcon } from '../icons/CheckIcon'
-import { PenIcon } from '../icons/PenIcon'
-import { XIcon } from '../icons/XIcon'
+import { CheckIcon, PenIcon, XIcon } from '../icons'
 
 interface EditableMessageProps {
   initialMessage: string
