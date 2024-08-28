@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { CheckIcon } from '../icons/CheckIcon'
+import { PenIcon } from '../icons/PenIcon'
+import { XIcon } from '../icons/XIcon'
 
 interface EditableMessageProps {
   initialMessage: string
@@ -40,7 +43,12 @@ export const EditableMessage: React.FC<EditableMessageProps> = ({
     return (
       <div className="flex items-center justify-between">
         <div className="whitespace-pre-wrap break-words">{initialMessage}</div>
-        <button onClick={() => setIsEditing(true)}>edit</button>
+        <button
+          onClick={() => setIsEditing(true)}
+          className="hover:bg-slate-100 p-1 rounded-md"
+        >
+          <PenIcon className="text-gray-500" width={24} height={24} />
+        </button>
       </div>
     )
   }
@@ -55,8 +63,18 @@ export const EditableMessage: React.FC<EditableMessageProps> = ({
         rows={3}
       />
       <div className="flex justify-end gap-2">
-        <button onClick={handleCancel}>Cancel</button>
-        <button onClick={handleSave}>Save</button>
+        <button
+          className="hover:bg-slate-100 p-1 rounded-md"
+          onClick={handleCancel}
+        >
+          <XIcon className="text-gray-500" width={24} height={24} />
+        </button>
+        <button
+          className="hover:bg-slate-100 p-1 rounded-md"
+          onClick={handleSave}
+        >
+          <CheckIcon className="text-gray-500" width={24} height={24} />
+        </button>
       </div>
     </div>
   )
